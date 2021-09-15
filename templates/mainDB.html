@@ -1,0 +1,83 @@
+{% extends 'landlordNav.html' %}
+
+{% block content %}
+
+
+    <table class="table table-striped table-hover table-responsive" border="1" style="width: 100%; margin-top: 20px; text-align: center;">
+      <tr>
+        <th colspan="13">Main Database</th>
+        </tr>
+        <tr>
+          <td>Property ID</td>
+          <td>Address</td>
+          <td>Amount Owed</td>
+          <td>Paid</td>
+          <td>Phone</td>
+          <td>Rent</td>
+          <td>Repairs</td>
+          <td>Task Date</td>
+          <td>Tasks</td>
+          <td>Renter First Name</td>
+          <td>Renter Last Name</td>
+          <td>Renter Phone</td>
+          <td>Renter Email</td>
+        </tr>
+
+        {% for main in main_data %}
+        <tr>
+          <td>{{main.id}}</td>
+          <td>{{main.address}}</td>
+          <td>{{main.amount_owed}}</td>
+          <td>{{main.paid}}</td>
+          <td>{{main.phone}}</td>
+          <td>{{main.rent}}</td>
+          <td>{{main.repairs}}</td>
+          <td>{{main.task_date}}</td>
+          <td>{{main.tasks}}</td>
+          <td>{{main.firstName}}</td>
+          <td>{{main.lastName}}</td>
+          <td>{{main.renter_phone}}</td>
+          <td>{{main.email}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>Enter your information here:</h2>
+    <form class="info_form" method="post">
+      {{info_form.hidden_tag()}}
+      {{info_form.address.label}} {{info_form.address}}
+      <br>
+      {{info_form.amount_owed.label}} {{info_form.amount_owed}}
+      <br>
+      {{info_form.paid.label}} {{info_form.paid}}
+      <br>
+      {{info_form.phone.label}} {{info_form.phone}}
+      <br>
+      {{info_form.rent.label}} {{info_form.rent}}
+      <br>
+      {{info_form.repairs.label}} {{info_form.repairs}}
+      <br>
+      {{info_form.task_date.label}} {{info_form.task_date}}
+      <br>
+      {{info_form.tasks.label}} {{info_form.tasks}}
+      <br>
+      {{info_form.firstName.label}} {{info_form.firstName}}
+      <br>
+      {{info_form.lastName.label}} {{info_form.lastName}}
+      <br>
+      {{info_form.renter_phone.label}} {{info_form.renter_phone}}
+      <br>
+      {{info_form.email.label}} {{info_form.email}}
+      <br>
+      {{info_form.submit}}
+    </form>
+
+    <div id="delete" style="position: relative; bottom: 430px; left: 550px;">
+    <h2>Delete Properties by ID:</h2>
+    <form class="delete_form" method="post">
+      {{delete_form.hidden_tag()}}
+      {{delete_form.id.label}} {{delete_form.id}}
+      <br>
+      {{delete_form.delete}}
+    </form>
+  </div>
+{% endblock %}

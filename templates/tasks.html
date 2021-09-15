@@ -1,0 +1,36 @@
+{% extends 'landlordNav.html' %}
+
+{% block content %}
+    <table class="table table-striped table-hover table-responsive" border="1" style="width: 100%; margin-top: 20px; text-align: center;">
+      <tr>
+        <th colspan="5">Tasks</th>
+        </tr>
+        <tr>
+
+
+          <td>First Name</td>
+          <td>Last Name</td>
+          <td>Address</td>
+          <td>Task Desciption</td>
+          <td>Task Date:</td>
+
+
+
+
+        </tr>
+
+        {% for main in main_data %}
+        <tr>
+          <td>{{main.firstName}}</td>
+          <td>{{main.lastName}}</td>
+          <td>{{main.address}}</td>
+          <td>{{main.tasks}}</td>
+          <td>{{main.task_date}}</td>
+
+
+        </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}

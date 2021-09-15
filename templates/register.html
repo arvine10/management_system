@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Register</title>
+  </head>
+  <body>
+    <h1>Register here!</h1>
+    <h2>Landlords Register:</h2>
+      <form class="landlord_form" method="post">
+        {{landlord_form.hidden_tag()}}
+        {{landlord_form.username.label}} {{landlord_form.username}}
+        <br>
+        {{landlord_form.password.label}} {{landlord_form.password}}
+        <br>
+        {{landlord_form.submit_landlord}}
+      </form>
+    <h2>Renters Register:</h2>
+      <form class="renter_form" method="post">
+        {{renter_form.hidden_tag()}}
+        {{renter_form.username.label}} {{renter_form.username}}
+        <br>
+        {{renter_form.password.label}} {{renter_form.password}}
+        <br>
+        {{renter_form.submit_renter}}
+      </form>
+    <h3>Head Here to Log In:</h3>
+    <a href="/"><button type="button" name="button">Log In Page</button></a>
+  </body>
+</html>

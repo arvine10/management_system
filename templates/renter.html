@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Comptible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renter</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1 class="jumbotron text-center">Renters</h1>
+    <h2>Request Repairs:</h2>
+    <div class="tab menu">
+      <form class="info_form" method="post">
+      {{info_form.hidden_tag()}}
+      {{info_form.firstName.label}} {{info_form.firstName}}
+      <br>
+      <br>
+      {{info_form.lastName.label}} {{info_form.lastName}}
+      <br>
+      <br>
+      {{info_form.repairs.label}} {{info_form.repairs}}
+      <br>
+      <br>
+      {{info_form.submit}}
+      </form>
+      <br>
+        <!--below is a copy paste from PayPal and was modified for this project--->
+        <div id="smart-button-container">
+            <div style="text-align: center;">
+              <div id="paypal-button-container"></div>
+            </div>
+          </div>
+        <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+        <script>
+          function initPayPalButton() {
+            paypal.Buttons({
+              style: {
+                shape: 'rect',
+                color: 'gold',
+                layout: 'vertical',
+                label: 'pay',
+
+              },
+
+              createOrder: function(data, actions) {
+                return actions.order.create({
+                  purchase_units: [{"amount":{"currency_code":"USD","value":1}}]
+                });
+              },
+
+              onApprove: function(data, actions) {
+                return actions.order.capture().then(function(orderData) {
+
+                  // Full available details
+                  console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+                  // Show a success message within this page, e.g.
+                  const element = document.getElementById('paypal-button-container');
+                  element.innerHTML = '';
+                  element.innerHTML = '<h3>Thank you for your payment!</h3>';
+
+                  // Or go to another URL:  actions.redirect('thank_you.html');
+
+                });
+              },
+
+              onError: function(err) {
+                console.log(err);
+              }
+            }).render('#paypal-button-container');
+          }
+          initPayPalButton();
+        </script>
+        <br>
+        <h4>Book a Repair</h4>
+        <br>
+        To book a repair, please contact 205-223-0227 between the hours of 8:30am-5:30pm
+        <br>
+​
+
+    </div>
+
+    <footer class="bg-light text-center text-lg-start">
+      <div class="text-center p-3" style="background-color: #508BFC;">
+        <p class="text-white" style="display: inline;">© 2021 Copyright:</p>
+        <a class="text-white" href="/">BillIERentals.com</a>
+      </div>
+    </footer>
+
+  </body>
+
+</html>

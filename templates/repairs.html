@@ -1,0 +1,24 @@
+{% extends 'landlordNav.html' %}
+
+{% block content %}
+
+    <table class="table table-striped table-hover" border="1" style="width: 100%; margin-top: 20px; text-align: center;">
+      <tr>
+        <th colspan="3">Repair Data</th>
+        </tr>
+        <tr>
+          <td>Address</td>
+          <td>Phone</td>
+          <td>Repair</td>
+        </tr>
+
+        {% for repair in repair_data %}
+        <tr>
+          <td>{{repair.address}}</td>
+          <td>{{repair.phone}}</td>
+          <td>{{repair.repairs}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

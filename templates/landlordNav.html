@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <style>
+      *{
+        box-sizing: border-box;
+      }
+
+    body{
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    #navbar{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+    }
+
+    #navbar ul{
+      display: flex;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    #navbar ul li a{
+      padding: 1rem;
+      display: block;
+      text-decoration: none;
+      font-size: 25px;
+      color: white;
+    }
+
+    #brand-name{
+      color: white;
+      font-size: 30px;
+    }
+
+    #navbar ul li:hover{
+      background-color: #555;
+    }
+
+    #toggle{
+      position: absolute;
+      top: 0.75rem;
+      right: 1rem;
+      height: 21px;
+      width: 30px;
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    #toggle .bar{
+      background-color: white;
+      height: 3px;
+      width: 100%;
+      border-radius: 10px;
+
+    }
+
+    @media screen and (max-width: 600px){
+      #toggle{
+        display: flex;
+      }
+
+      #navbar{
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      #navbar ul{
+        flex-direction: column;
+      }
+
+      #navbar-links{
+        width: 100%;
+        display: none;
+      }
+
+      #navbar ul li a{
+        text-align: center;
+      }
+
+      .style{
+        display: block;
+      }
+
+
+
+    }
+    
+  </style>
+  
+
+
+  <nav id="navbar">
+    <div id="brand-name">Billie Rentals</div>
+    <a href="#" id="toggle">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </a>
+    <div id="navbar-links">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="mainDB">MainDB</a></li>
+        <li><a href="repairs">Repairs</a></li>
+        <li><a href="tasks">Tasks</a></li>
+        <li><a href="payments">Payments</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <script>
+    const toggle = document.getElementById("toggle");
+    var navbar_links = document.getElementById("navbar-links");
+    var isTrue;
+
+    window.addEventListener("resize",(e)=>{
+      if (isTrue == true) navbar_links.classList.toggle("style");
+      if (window.innerWidth > 600){
+        navbar_links.style.display = "flex";
+      }
+
+      else{
+        navbar_links.style.display = "none";
+      }
+
+    });
+
+    toggle.addEventListener("click",(e)=>{
+      isTrue = navbar_links.classList.toggle("style");
+
+     if (isTrue == true) navbar_links.style.display = "block";
+     else navbar_links.style.display = "none";
+
+
+    });
+  </script>
+
+
+
+    <!-- <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #E9ECEF;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="mainDB">MainDB</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="repairs">Repairs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="tasks">Tasks</a>
+              </li>
+            <li class="nav-item">
+            <a class="nav-link" href="payments">Payments</a>
+            </li>
+
+          </ul>
+
+        </div>
+      </nav> -->
+
+    {% block content %}
+
+    {% endblock %}
+
+    <br>
+    <footer style="position: fixed; width: 100%; bottom: 0px;"  class="bg-light text-center text-lg-start">
+      <div class="text-center p-3" style="background-color: #508BFC;">
+        <p class="text-white" style="display: inline;">© 2021 Copyright:</p>
+        <a class="text-white" href="/">BillIERentals.com</a>
+      </div>
+    </footer>
+
+
+</body>
+</html>

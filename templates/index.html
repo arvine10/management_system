@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Comptible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <header>
+        <h1 class="jumbotron text-center">Welcome! Please Sign In!</h1>
+    </header>
+    <main>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class="alert alert-warning">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+      {% block body %}{% endblock %}
+      <section class="vh-100" style="background-color: #508bfc;">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card shadow-2-strong" style="border-radius: 1rem;">
+              <div class="card-body p-5 text-center">
+
+                <h3 class="mb-5">Sign in</h3>
+
+                <h2>Landlords:</h2>
+                  <form class="landlord_form" method="post">
+                    {{landlord_form.hidden_tag()}}
+                    {{landlord_form.username.label}} {{landlord_form.username}}
+                    <br>
+                    {{landlord_form.password.label}} {{landlord_form.password}}
+                    <br>
+                    {{landlord_form.submit_landlord}}
+                  </form>
+
+                <h2>Renters:</h2>
+                  <form class="landlord_form" method="post">
+                    {{renter_form.hidden_tag()}}
+                    {{renter_form.username.label}} {{renter_form.username}}
+                    <br>
+                    {{renter_form.password.label}} {{renter_form.password}}
+                    <br>
+                    {{renter_form.submit_renter}}
+                  </form>
+
+
+      </section>
+    </main>
+    <footer style="background-color: #eee; padding-left: 2.5%">
+        <h4> New User? Sign Up Here</h4>
+        <a href="register"><button type="button" name="button">Sign Up</button></a>
+    </footer>
+  </body>
+</html>
